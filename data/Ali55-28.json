@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Ali55",
+  "risk": "3",
+  "title": "reentrancy vulnerability in the transferOutAndCall function.",
+  "issueId": 28,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/28"
+}
