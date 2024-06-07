@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "jeremie",
+  "risk": "2",
+  "title": "The return value of an external transfer/transferFrom call is not checked, leading to revert if the function fails.",
+  "issueId": 19,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/19"
+}
