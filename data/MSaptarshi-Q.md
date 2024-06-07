@@ -21,4 +21,12 @@ Add
 Some tokens like UNI/COMP revert if the value passed in transfer/approve is more than uint96
 https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/chain/ethereum/contracts/THORChain_Router.sol#L481
 ## Recommendation
-have a maximum threshold of the amount transfered in a single time which can't  be like uint256.max
+have a maximum threshold of the amount transferred in a single time which can't  be like uint256.max
+
+# [L-04] Emit events before external calls
+It is a good habit to emit events before external calls
+https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/chain/ethereum/contracts/THORChain_Router.sol#L284
+https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/chain/ethereum/contracts/THORChain_Router.sol#L330
+https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/chain/ethereum/contracts/THORChain_Router.sol#L377
+## Recommendation
+Emit the events before the external calls
