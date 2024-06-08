@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "typicalHuman",
+  "risk": "3",
+  "title": "Unsuccessful swap could lead to loss of ERC20 tokens",
+  "issueId": 36,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/36"
+}
