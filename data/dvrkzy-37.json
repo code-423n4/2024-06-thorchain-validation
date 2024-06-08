@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "dvrkzy",
+  "risk": "2",
+  "title": "`_transferOutV5` implementation allows a discrepancy to happen which can cause loss of funds.",
+  "issueId": 37,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/37"
+}
