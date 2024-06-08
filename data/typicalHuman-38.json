@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "typicalHuman",
+  "risk": "2",
+  "title": "Incorrect safeApprove implementation",
+  "issueId": 38,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/38"
+}
