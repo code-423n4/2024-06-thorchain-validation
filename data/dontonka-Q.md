@@ -54,9 +54,6 @@ https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THO
 https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L304
 
 
-
-
-
 ## [ GAS - 1 ] : use external instead of public
 -----
 You should use `external` here as this is not called internally.
@@ -92,3 +89,34 @@ https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclien
 https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclients/ethereum/ethereum_block_scanner.go#L886
 https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclients/evm/evm_block_scanner.go#L525
 https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclients/evm/evm_block_scanner.go#L736
+
+
+### [ NC - 3 ] : CPU optimization
+-----
+Low hanging fruit CPU optimization in `isToValidContractAddress` function. You should addr.String() before the loop so you do this only once per function call and not per iteration as currently. This calls everytime `func (a *Address) checksumHex()` which is not that lightweight function. There are 2 instances of this.
+
+```diff
+func (e *EVMScanner) isToValidContractAddress(addr *ecommon.Address, includeWhiteList bool) bool {
+	if addr == nil {
+		return false
+	}
+	// get the smart contract used by thornode
+	contractAddresses := e.pubkeyMgr.GetContracts(e.cfg.ChainID)
+	if includeWhiteList {
+		contractAddresses = append(contractAddresses, e.whitelistContracts...)
+	}
++
++       addrStr := addr.String()
+	// combine the whitelist smart contract address
+	for _, item := range contractAddresses {
+-		if strings.EqualFold(item.String(), addr.String()) {
++		if strings.EqualFold(item.String(), addrStr) {
+			return true
+		}
+	}
+	return false
+}
+```
+https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclients/evm/evm_block_scanner.go#L706
+https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclients/ethereum/ethereum_block_scanner.go#L671
+
