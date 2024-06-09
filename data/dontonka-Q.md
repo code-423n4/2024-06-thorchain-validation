@@ -54,7 +54,46 @@ https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THO
 https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L304
 
 
-## [ GAS - 1 ] : use external instead of public
+## [ LOW - 2 ] : transactions just fetched not saved into the block's metadata
+-----
+`ETHScanner::FetchTxs` will save the Block Metadata (calling `SaveBlockMeta`), but transaction(s) just fetched will `NOT be included` inside since in `NewBlockMeta` Transactions field is always initialized with empty array and `txIn parameter is ignored`. Only reporting this as Low as unsure on the impact and also NewBlockMeta is out-of-scope, but has the potential for Medium severity.
+```diff
+func (e *ETHScanner) FetchTxs(height, chainHeight int64) (stypes.TxIn, error) {
+	block, err := e.getRPCBlock(height)
+	if err != nil {
+		return stypes.TxIn{}, err
+	}
+	txIn, err := e.processBlock(block)
+	if err != nil {
+		e.logger.Error().Err(err).Int64("height", height).Msg("fail to search tx in block")
+		return stypes.TxIn{}, fmt.Errorf("fail to process block: %d, err:%w", height, err)
+	}
+	// blockMeta need to be saved , even there is no transactions found on this block at the time of scan
+	// because at the time of scan , so the block hash will be stored, and it can be used to detect re-org
+	blockMeta := types.NewBlockMeta(block.Header(), txIn)
+	if err = e.blockMetaAccessor.SaveBlockMeta(blockMeta.Height, blockMeta); err != nil {
+		e.logger.Err(err).Msgf("fail to save block meta of height: %d ", blockMeta.Height)
+	}
+
+        ...
+```
+ 
+```
+func NewBlockMeta(block *types.Header, txIn stypes.TxIn) *BlockMeta {
+	txsMeta := make([]TransactionMeta, 0)
+
+	return &BlockMeta{
+		PreviousHash: block.ParentHash.Hex(),
+		Height:       block.Number.Int64(),
+		BlockHash:    block.Hash().Hex(),
+		Transactions: txsMeta,
+	}
+}
+```
+https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclients/ethereum/ethereum_block_scanner.go#L194-L195
+
+
+## [ LOW - 3 ] : use external instead of public
 -----
 You should use `external` here as this is not called internally.
 ```diff
