@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "mrudenko",
+  "risk": "2",
+  "title": "No ability to send funds back if transferOutPayload.to fails to receive funds, and  payable(address(msg.sender)) also fails to receive it",
+  "issueId": 54,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/54"
+}
