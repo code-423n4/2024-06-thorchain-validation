@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "mrudenko",
+  "risk": "2",
+  "title": "vault.send will return success if sending ETH to vault address that is non-existed contract",
+  "issueId": 55,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/55"
+}
