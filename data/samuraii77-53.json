@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "samuraii77",
+  "risk": "2",
+  "title": "Deadline parameter set to `type(uint256).max` in `_routerDeposit()` allows for unfavorable terms",
+  "issueId": 53,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/53"
+}
