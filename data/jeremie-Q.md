@@ -15,6 +15,7 @@ require(success, "Transfer failed.");
 Title:
 Costly operations inside a loop
 
+Proof-of-concept:
 Operations such as state variable updates inside a loop cost a lot of gas, are expensive and may lead to out-of-gas errors. (https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop)
 
 Code:
@@ -30,6 +31,7 @@ Optimizations using local variables are preferred.
 Title:
 Missing events
 
+Proof-of-concept:
 Detect missing events for critical arithmetic parameters.
 https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
 
@@ -43,6 +45,9 @@ Emit an event
 
 Title:
 Protocol doesn't handle ERC20 tokens with decimals other than 18, leading tokens with many decimal values may cause issues due to overflow, while tokens with few decimal values may result in a loss of precision.
+
+Proof-of-concept:
+https://solodit.xyz/issues/potential-funds-locked-due-low-token-decimal-and-long-stream-duration-spearbit-locke-pdf
 
 Code:
 https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol
