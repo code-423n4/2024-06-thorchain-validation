@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Naresh",
+  "risk": "2",
+  "title": "Use of `.send()/payable.transfer()` May Revert if The Recipient's Fallback Function Consumes More Than 2300 Gas",
+  "issueId": 63,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/63"
+}
