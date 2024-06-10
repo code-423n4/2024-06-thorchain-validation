@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "typicalHuman",
+  "risk": "2",
+  "title": "Some functions doesn't have a check for msg.value being 0 in case of ERC20 transfer, which could lead to loss of funds",
+  "issueId": 70,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/70"
+}
