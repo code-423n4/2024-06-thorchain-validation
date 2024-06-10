@@ -2,7 +2,7 @@
 
 | |Issue|Instances| 
 |-|:-|:-:|
-| [[L-01](#l-01)] | Use `call` instead of `transfer/send` on payable addresses | 10| 
+| [[L-01](#l-01)] | Use `call` instead of `transfer/send` on payable addresses | 9| 
 | [[L-02](#l-02)] | Consider adding validation of user inputs | 6| 
 | [[L-03](#l-03)] | Execution at deadlines should be allowed | 1| 
 | [[L-04](#l-04)] | Consider bounding input array length | 4| 
@@ -43,12 +43,10 @@ To overcome this, Solidity introduced the `.call{value: _amount}('')` method, wh
 
 326:           payable(address(msg.sender)).transfer(msg.value); // For failure, bounce back to vault & continue.
 
-424:     bool success = asgard.send(msg.value);
-
 ```
 
 
-*GitHub* : [152](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L152-L152), [194](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L194-L194), [196](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L196-L196), [211](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L211-L211), [213](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L213-L213), [278](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L278-L278), [280](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L280-L280), [324](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L324-L324), [326](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L326-L326), [424](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L424-L424)
+*GitHub* : [152](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L152-L152), [194](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L194-L194), [196](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L196-L196), [211](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L211-L211), [213](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L213-L213), [278](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L278-L278), [280](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L280-L280), [324](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L324-L324), [326](https://github.com/code-423n4/2024-06-thorchain/blob/733dbe7cd7eef0dffc5e8a2d02e36bf74b196eff/ethereum/contracts/THORChain_Router.sol#L326-L326)
 
 ### [L-02]<a name="l-02"></a> Consider adding validation of user inputs
 
