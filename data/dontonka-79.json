@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "dontonka",
+  "risk": "2",
+  "title": "`Removed` field from event log is ignored which can lead to false event being processed",
+  "issueId": 79,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/79"
+}
