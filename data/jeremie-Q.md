@@ -34,8 +34,8 @@ Detect missing events for critical arithmetic parameters.
 https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
 
 Code:
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L408-L426
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L422
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L176
 
 Recommendations:
-Add something like this after the line 422: 
-emit VaultTransfer(msg.sender, asgard, coins, memo);
+Emit an event
