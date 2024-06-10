@@ -39,3 +39,18 @@ https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THO
 
 Recommendations:
 Emit an event
+
+
+Title:
+Protocol doesn't handle ERC20 tokens with decimals other than 18, leading tokens with many decimal values may cause issues due to overflow, while tokens with few decimal values may result in a loss of precision.
+
+Code:
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol
+
+Recommendations:
+To mitigate this issue, it is recommended that the decimal values of all tokens be checked, and appropriate handling measures implemented.
+Maybe add a function like this:
+function getAdjustedAmount(IERC20 token, uint256 amount) internal view returns (uint256) {
+        uint8 decimals = token.decimals();
+        return amount * (10 ** (18 - decimals));
+}
