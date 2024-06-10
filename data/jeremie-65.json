@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "jeremie",
+  "risk": "2",
+  "title": "Rely on the token address in the accounting, this can introduce vulnerabilities and complications in the accounting and handling of these tokens, as the same logical token could have different addresses. This situation can lead to inconsistencies, incorrect balances, and potential exploits if the system incorrectly assumes that each address represents a distinct token.",
+  "issueId": 65,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/65"
+}
