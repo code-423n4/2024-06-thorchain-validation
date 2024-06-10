@@ -54,3 +54,29 @@ function getAdjustedAmount(IERC20 token, uint256 amount) internal view returns (
         uint8 decimals = token.decimals();
         return amount * (10 ** (18 - decimals));
 }
+
+
+Title:
+Doesn't check for Handling Support For Fee on Transfer Tokens and Deflationary Tokens.
+
+Impact:
+Different ERC-20 token implementations behave differently regarding the actual amount received when transferring tokens. USDT on Ethereum, for example, can charge a fee when transferring ERC-20 tokens.
+Deflationary tokens like STA, meanwhile, burn a certain percentage of the transferred amount, which subsequently decreases the token supply.
+As a result, the transfer of STA and USDT, and other tokens like them, to a smart contract can result in incorrect token accounting.
+
+
+Code:
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol
+
+Recommendations:
+To mitigate this issue, the contract should check the balance before and after a transfer, updating the balance of the msg.sender based on the amount subtracted for fees or burnt tokens.
+
+function Deposit(uint256 amount) public {
+    uint balance_before = token.balanceOf(address(this) 
+    token.transferFrom(msg.sender, address(this), amount); 
+    uint balance_after = token.balanceOf(address(this); 
+    require(balance_after >= balance_before );
+    uint amount_to_add = balance_after — balance_before; 
+    balances[msg.sender] += amount_to_add;
+
+}
