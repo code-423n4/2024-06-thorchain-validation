@@ -1,4 +1,4 @@
-### [ LOW - 1 ] : transferOut*V5 are not validating native asset amount alignment with parameter 
+## [ LOW - 1 ] : transferOut*V5 are not validating native asset amount alignment with parameter 
 -----
 While `transferOutV5` and `transferOutAndCallV5` calls are done by Bifrost, still ensuring the amount sent in parameter is the same as the native asset seems a good assertion todo, so I would highly recommend to add those. In V4 this can't happen since you literally use `msg.value` as the amount, but here there is room for mistake in that regard.
 ```diff
@@ -107,6 +107,18 @@ You should use `external` here as this is not called internally.
 https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L242
 
 
+## [ LOW - 4 ] : transferAllowanceEvent comments is confusing
+-----
+There is a comment regarding `transferAllowanceEvent` that is rather confusing, which indicate that the code should behave like `transferOutEvent` with an exitEarly path (at least how I understand it), but there is no logic to enforce such rule, so submitting this as Low since unsure of the impact, but that has the potential for a Medium.
+
+```diff
+		case transferAllowanceEvent:
+			// there is no circumstance , router will emit multiple transferAllowance event
+			// if that does happen , it means something dodgy happened
+```
+https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclients/shared/evm/smartcontract_log_parser.go#L244-L246
+
+
 ## [ NC - 1 ] : isVaultTransfer is poluting the code
 -----
 Everything related to `isVaultTransfer` is not used and poluting the code for no good reason. This flag was related to `vaultTransferEvents` event and used for yggdrasil vaults (single sig vaults) which have been depracted. I would recommend to remove all the related logic to have a cleaner code base.
@@ -130,7 +142,7 @@ https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclien
 https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclients/evm/evm_block_scanner.go#L736
 
 
-### [ NC - 3 ] : CPU optimization
+## [ NC - 3 ] : CPU optimization
 -----
 Low hanging fruit CPU optimization in `isToValidContractAddress` function. You should addr.String() before the loop so you do this only once per function call and not per iteration as currently. This calls everytime `func (a *Address) checksumHex()` which is not that lightweight function. There are 2 instances of this.
 
@@ -158,4 +170,5 @@ func (e *EVMScanner) isToValidContractAddress(addr *ecommon.Address, includeWhit
 ```
 https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclients/evm/evm_block_scanner.go#L706
 https://github.com/code-423n4/2024-06-thorchain/blob/main/bifrost/pkg/chainclients/ethereum/ethereum_block_scanner.go#L671
+
 
