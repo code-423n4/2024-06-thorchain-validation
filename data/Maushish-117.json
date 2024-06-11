@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Maushish",
+  "risk": "2",
+  "title": "Sending batch withdrawal requests can possibly DoS",
+  "issueId": 117,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/117"
+}
