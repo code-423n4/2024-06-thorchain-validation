@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Maushish",
+  "risk": "2",
+  "title": "`safeApprove` in `_routerDeposit` could revert for non-standard token like USDT",
+  "issueId": 124,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/124"
+}
