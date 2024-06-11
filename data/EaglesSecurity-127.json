@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "EaglesSecurity",
+  "risk": "2",
+  "title": "DoS can occur in THORChain_Router.sol",
+  "issueId": 127,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/127"
+}
