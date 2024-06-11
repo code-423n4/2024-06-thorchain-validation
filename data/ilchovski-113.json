@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "ilchovski",
+  "risk": "2",
+  "title": "Missing msg.value and input argument validation",
+  "issueId": 113,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/113"
+}
