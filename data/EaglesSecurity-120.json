@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "EaglesSecurity",
+  "risk": "2",
+  "title": "call() should be used instead of transfer() and send()",
+  "issueId": 120,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/120"
+}
