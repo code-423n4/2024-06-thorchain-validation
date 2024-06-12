@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Heba-Elhasan",
+  "risk": "2",
+  "title": "Hardcoding the expiration date  in _routerDeposit( ) to type(uint).max can lead to halting fund transfer to the new router",
+  "issueId": 238,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/238"
+}
