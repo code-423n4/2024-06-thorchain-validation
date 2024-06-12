@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Bauchibred",
+  "risk": "2",
+  "title": "Protocol in multiple instances uses `send` & `transfer` to transfer ETH which in many instances would fail",
+  "issueId": 130,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/130"
+}
