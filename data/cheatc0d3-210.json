@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "cheatc0d3",
+  "risk": "2",
+  "title": "Network Delays Can Cause Transactions to Revert in depositWithExpiry Function Due to Close Expiration Time",
+  "issueId": 210,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/210"
+}
