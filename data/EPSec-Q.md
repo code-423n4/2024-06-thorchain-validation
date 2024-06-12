@@ -343,8 +343,90 @@ Instead of separating the logic into a separate function, consider inlining the 
 	```
 
 ### Tools Used
-
 Aderyn
+
+## Low 13 Not correct natspec
+
+### Summary
+
+In the function `THORChain_Router::_transferOutAndCallV5`, if the swap operation fails, the `msg.value` will be transferred to the `aggregationPayload.target`. However, instead of the recipient, the `msg.value` is transferred to `aggregationPayload.target`.
+
+### Proof of Concept
+
+The comment `If can't swap, just send the recipient the gas asset` states that ETH should be sent to the recipient. However, as shown in the code below, the `msg.value` is sent to the contract `aggregationPayload.target`, causing ETH to become stuck in the `aggregationPayload.target` contract. More importantly, this is not the intended recipient, so the recipient will not receive the intended ETH. This function should be reworked to operate similarly to `transferOutAndCall`.
+
+### Impact
+
+Incorrectly transferring ETH to `aggregationPayload.target` instead of the intended recipient can result in funds being stuck in the wrong contract and the recipient not receiving the intended ETH. This can lead to significant operational issues and loss of funds.
+
+### Code Snippet
+
+```solidity
+function _transferOutAndCallV5(
+    TransferOutAndCallData calldata aggregationPayload
+  ) private {
+    if (aggregationPayload.fromAsset == address(0)) {
+      // call swapOutV5 with ether
+      (bool swapOutSuccess, ) = aggregationPayload.target.call{
+        value: msg.value
+      }(
+        abi.encodeWithSignature(
+          "swapOutV5(address,uint256,address,address,uint256,bytes,string)",
+          aggregationPayload.fromAsset,
+          aggregationPayload.fromAmount,
+          aggregationPayload.toAsset,
+          aggregationPayload.recipient,
+          aggregationPayload.amountOutMin,
+          aggregationPayload.payload,
+          aggregationPayload.originAddress
+        )
+      );
+      if (!swapOutSuccess) {
+        bool sendSuccess = payable(aggregationPayload.target).send(msg.value); // If can't swap, just send the recipient the gas asset
+        if (!sendSuccess) {
+          payable(address(msg.sender)).transfer(msg.value); // For failure, bounce back to vault & continue.
+        }
+      }
+```
+
+### Tools Used
+Manual Review
+
+### Recommended Mitigation Steps
+
+```diff
+function _transferOutAndCallV5(
+    TransferOutAndCallData calldata aggregationPayload
+) private {
+    if (aggregationPayload.fromAsset == address(0)) {
+        // Call swapOutV5 with ether
+        (bool swapOutSuccess, ) = aggregationPayload.target.call{
+            value: msg.value
+        }(
+            abi.encodeWithSignature(
+                "swapOutV5(address,uint256,address,address,uint256,bytes,string)",
+                aggregationPayload.fromAsset,
+                aggregationPayload.fromAmount,
+                aggregationPayload.toAsset,
+                aggregationPayload.recipient,
+                aggregationPayload.amountOutMin,
+                aggregationPayload.payload,
+                aggregationPayload.originAddress
+            )
+        );
+        if (!swapOutSuccess) {
++            bool sendSuccess = payable(aggregationPayload.recipient).send(msg.value); 
+-            bool sendSuccess = payable(aggregationPayload.target).send(msg.value); 
+            if (!sendSuccess) {
+                payable(address(msg.sender)).transfer(msg.value); // For failure, bounce back to vault & continue.
+            }
+        }
+    }
+}
+
+```
+
+
 # Informationals
 
 ## Informational 01 Reentrence library
