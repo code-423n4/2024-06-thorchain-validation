@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "_karanel",
+  "risk": "2",
+  "title": "Incorrect access control on `THORChain_Router::transferOutAndCall` and doesn't work as intended and described in the Readme",
+  "issueId": 245,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/245"
+}
