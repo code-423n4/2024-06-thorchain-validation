@@ -1,74 +1,39 @@
 Summary:
 The review of the THORChain_Router contract did not reveal any critical vulnerabilities that could be exploited by an attacker. However, several areas for improvement were identified, primarily related to best practices in Solidity development. Adopting these practices can enhance the security and robustness of the contract.
 
-Details of Reviewed Areas:
+Use of send in returnVaultAssets
+Severity: Low
+Location: returnVaultAssets function
+Issue: The function currently uses send for transferring ETH, which restricts the gas forwarded to 2300 gas units. This can be insufficient for more complex recipient contracts.
+Impact: Limited flexibility and potential for ETH transfer failures to complex contracts.
+Recommendation: Replace send with call for more flexible gas management and better error handling.
+Suggested Code Change:
 
-Reentrancy Protection:
+solidity
+Copy code
+function returnVaultAssets(
+    address router,
+    address payable asgard,
+    Coin[] memory coins,
+    string memory memo
+) external payable nonReentrant {
+    if (router == address(this)) {
+        for (uint i = 0; i < coins.length; i++) {
+            _adjustAllowances(asgard, coins[i].asset, coins[i].amount);
+        }
+        emit VaultTransfer(msg.sender, asgard, coins, memo); // Does not include ETH.
+    } else {
+        for (uint i = 0; i < coins.length; i++) {
+            _routerDeposit(router, asgard, coins[i].asset, coins[i].amount, memo);
+        }
+    }
 
-The nonReentrant modifier is correctly applied. It effectively prevents reentrancy. We recommend also following the checks-effects-interactions pattern to further minimize risks.
-Allowance Adjustments:
+    // Use call instead of send
+    (bool success, ) = asgard.call{value: msg.value}("");
+    require(success, "ETH transfer failed");
+}
 
-Allowance adjustments are correctly handled. The use of SafeMath or similar techniques could provide additional safety against underflows or overflows.
-ETH Balance Consistency:
-
-The assertion that the contract’s ETH balance is non-negative is redundant. Removing this assertion would improve efficiency without affecting security.
-Expiration Handling:
-
-Expiration checks using require are correctly implemented and should adequately protect against expired transactions.
-Valid Address Checks:
-
-The contract correctly ensures that addresses are valid and non-zero.
-ERC-20 Transfer Success:
-
-While low-level calls are used correctly, adopting OpenZeppelin’s SafeERC20 library for token transfers and approvals would make the implementation more robust.
-Safe TransferFrom Implementation:
-
-The method effectively handles transfers and checks balances. Verifying against fee-charging tokens with libraries could enhance its reliability.
-ETH Transfer Failure Handling:
-
-Handling ETH transfer failures by reverting to the sender is appropriate. Using call instead of send would provide better error handling.
-Payload Handling:
-
-The contract appears to securely handle payloads. Continuous validation is recommended to prevent potential vulnerabilities.
-Batch Transfer Consistency:
-
-Batch operations are handled consistently. Improvements in atomicity and partial failure handling are recommended.
-Safe Approval:
-
-The current approval mechanism works but switching to SafeERC20 would provide a more secure approach to token approvals.
-Recommendations for Improvement:
-
-Implement checks-effects-interactions pattern along with nonReentrant.
-Use SafeMath or similar libraries for arithmetic operations.
-Remove redundant ETH balance assertions.
-Use SafeERC20 for ERC-20 interactions.
-Replace send with call for ETH transfers to improve error handling.
-Ensure continuous payload validation.
-Improve batch operation atomicity and failure handling.
-Switch to SafeERC20 for setting approvals.
-Conclusion:
-The THORChain_Router contract is currently secure but would benefit from the adoption of best practices outlined above. Implementing these recommendations will enhance the contract’s robustness against potential issues.
-
-This approach ensures that you provide valuable feedback while also reinforcing that the current state of the contract does not present critical vulnerabilities.
-
-
-
-
-could you give me a report based on this to submit to the company but more likely to be written not very formal and by hume
-
-Certainly! Below is a more informal, human-readable report that you can submit to the company. It includes observations and suggestions for improvements based on best practices in Solidity smart contract development.
-
-Report on THORChain_Router Contract
-Date: [Today's Date]
-
-Hey Team,
-
-I’ve reviewed the THORChain_Router contract, and while I didn’t find any critical vulnerabilities that could be easily exploited by an attacker, I did come across a few areas where we can tighten up the code and adopt some best practices. Here’s a summary of my findings and recommendations:
-
-Summary of Findings
-Reentrancy Protection
-
-What I Found: The nonReentrant modifier is used to prevent reentrancy attacks, which is great.
+what I Found: The nonReentrant modifier is used to prevent reentrancy attacks, which is great.
 Suggestion: Alongside the nonReentrant modifier, using the checks-effects-interactions pattern would make our defenses even stronger. This means updating our internal state before making external calls to minimize risks.
 Allowance Adjustments
 
