@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "OxTenma",
+  "risk": "2",
+  "title": "Expiration timestamp is set to `type(uint).max` leading to transaction unable to fail after a user defined timestamp.",
+  "issueId": 195,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/195"
+}
