@@ -135,3 +135,81 @@ Consider approving to 0 first.
 
 ***
 
+
+## 4. Excessive deadline param in use in `_routerDeposit` and `transferOutAndCall`
+
+Links to affected code *
+
+https://github.com/code-423n4/2024-06-thorchain/blob/e5ae503d0dc2394a82242be6860eb538345152a1/ethereum/contracts/THORChain_Router.sol#L481
+
+https://github.com/code-423n4/2024-06-thorchain/blob/e5ae503d0dc2394a82242be6860eb538345152a1/ethereum/contracts/THORChain_Router.sol#L270-L276
+
+### Impact
+
+The deadline param used in `depositWithExpiry` in the router function is hardcoded as `type(uint).max` which is extremely large and can leave the transaction for a very long time in the mempool. 
+
+```solidity
+  function _routerDeposit(
+    address _router,
+    address _vault,
+    address _asset,
+    uint _amount,
+    string memory _memo
+  ) internal {
+    _vaultAllowance[msg.sender][_asset] -= _amount;
+    safeApprove(_asset, _router, _amount);
+
+    iROUTER(_router).depositWithExpiry(
+      _vault,
+      _asset,
+      _amount,
+      _memo,
+      type(uint).max
+    );
+  }
+
+```
+The same can be observed digging a bit deeper into the `transferOutAndCall` function when the `swapOut` function is queried. Here, there's no deadline parameter provided, but looking at the `swapOut` function in any of the aggregators, [THorchain_Aggregator](https://github.com/code-423n4/2024-06-thorchain/blob/e5ae503d0dc2394a82242be6860eb538345152a1/chain/ethereum/contracts/THORChain_Aggregator.sol#L136-L140) for instance, the function interacts with uniswap router passing in `type(uint).max` as the deadline. 
+
+```solidity
+  function transferOutAndCall(
+    address payable aggregator,
+    address finalToken,
+    address to,
+    uint256 amountOutMin,
+    string memory memo
+  ) public payable nonReentrant {
+    uint256 _safeAmount = msg.value;
+    (bool erc20Success, ) = aggregator.call{value: _safeAmount}(
+      abi.encodeWithSignature(
+        "swapOut(address,address,uint256)",
+        finalToken,
+        to,
+        amountOutMin
+      )
+    );
+```
+
+```solidity
+  function swapOut(
+    address token,
+    address to,
+    uint256 amountOutMin
+  ) public payable nonReentrant {
+    address[] memory path = new address[](2);
+    path[0] = WETH;
+    path[1] = token;
+    swapRouter.swapExactETHForTokens{value: msg.value}(
+      amountOutMin,
+      path,
+      to,
+      type(uint).max
+    );
+  }
+```
+
+Setting the deadlines to this value causes that the deadline check is not effective, allowing outdated slippage and allow pending transaction to be unexpectedly executed or risk staying for very long in the mempool. And also allows for sandwich attacks by mev bots which can use this to steal positive slippage.
+
+### Recommended Mitigation Steps
+
+Consider using a smaller, more reasonable value.
