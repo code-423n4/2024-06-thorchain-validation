@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Topmark",
+  "risk": "3",
+  "title": "THORChain_Router Contract Balance can be Emptied Due to Error in TransferOut Implementation",
+  "issueId": 145,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/145"
+}
