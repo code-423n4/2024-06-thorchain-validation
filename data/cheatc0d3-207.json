@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "cheatc0d3",
+  "risk": "2",
+  "title": "block.timestamp Manipulation in THORChain_Router's depositWithExpiry Function Allows Miners to Exploit Expiry Checks",
+  "issueId": 207,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/207"
+}
