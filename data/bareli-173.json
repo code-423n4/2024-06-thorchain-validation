@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "bareli",
+  "risk": "2",
+  "title": "No check for  \"chainid\"",
+  "issueId": 173,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/173"
+}
