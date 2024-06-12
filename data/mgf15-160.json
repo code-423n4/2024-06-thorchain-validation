@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "mgf15",
+  "risk": "2",
+  "title": "if transferOutPayload[i] is contract cant accept ether batchTransferOutV5 will revert ",
+  "issueId": 160,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/160"
+}
