@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Bauchibred",
+  "risk": "2",
+  "title": "Depositing via any router through `THORChain_Router_routerDeposit()` could be easily broken for some supported tokens",
+  "issueId": 134,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/134"
+}
