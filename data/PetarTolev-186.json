@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "PetarTolev",
+  "risk": "3",
+  "title": "Anyone can drain the Router contract, due to missing access control in the `_transferOutV5`",
+  "issueId": 186,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/186"
+}
