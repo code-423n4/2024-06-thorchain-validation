@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Svetoslavb",
+  "risk": "2",
+  "title": "Missing assertion that no msg.value is not sent in transfer out functions in THORChain_Router",
+  "issueId": 148,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/148"
+}
