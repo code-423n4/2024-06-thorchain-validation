@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Heba-Elhasan",
+  "risk": "3",
+  "title": "THORChain_Router:transferOutV5( ) Does not validate ETH amount given which will lead to protocol insolvancy",
+  "issueId": 229,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/229"
+}
