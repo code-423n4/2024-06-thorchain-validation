@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "Sparrow",
+  "risk": "2",
+  "title": "Unreliable ETH Transfer Mechanism in `returnVaultAssets` Function Due to `.send` Usage",
+  "issueId": 216,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/216"
+}
