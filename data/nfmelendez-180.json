@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "nfmelendez",
+  "risk": "2",
+  "title": "Use of payable.send() prevent honest contracts from transfer out ETH",
+  "issueId": 180,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/180"
+}
