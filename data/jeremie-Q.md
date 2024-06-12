@@ -1,6 +1,10 @@
 ## Title
 Use of send function, leading to fail if gas to high.
 
+## Lines of code
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L152
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L424
+
 ## Impact
 Using the send function can lead to transaction failures if the recipient requires more than 2300 gas to process the received Ether. This could result in:
 
@@ -10,15 +14,12 @@ Using the send function can lead to transaction failures if the recipient requir
 
 
 ## Proof-of-code
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L152
+If the recipient's fallback or receive function requires more than 2300 gas, the send function will fail, and the transaction will revert.
 
     bool success = vault.send(safeAmount);
 
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L424
 
     bool success = asgard.send(msg.value);
-
-If the recipient's fallback or receive function requires more than 2300 gas, the send function will fail, and the transaction will revert.
 
 
 ## Recommendation
@@ -32,6 +33,14 @@ Use call function instead:
 ## Title
 Costly operations inside a loop
 
+
+## Lines of code
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L250-L252
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L400-L402
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L415-L417
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L420-L422
+
+
 ## Impact
 Operations such as state variable updates inside a loop cost a lot of gas, are expensive and may lead to out-of-gas errors.
 
@@ -40,26 +49,20 @@ Operations such as state variable updates inside a loop cost a lot of gas, are e
 (https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop)
 
 
-## Code
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L250-L252
-
     for (uint i = 0; i < transferOutPayload.length; ++i) {
       _transferOutV5(transferOutPayload[i]);
     }
 
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L400-L402
 
     for (uint i = 0; i < aggregationPayloads.length; ++i) {
       _transferOutAndCallV5(aggregationPayloads[i]);
     }
 
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L415-L417
 
     for (uint i = 0; i < coins.length; i++) {
         _adjustAllowances(asgard, coins[i].asset, coins[i].amount);
       }
 
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L420-L422
 
     for (uint i = 0; i < coins.length; i++) {
         _routerDeposit(router, asgard, coins[i].asset, coins[i].amount, memo);
@@ -75,6 +78,11 @@ Optimizations using local variables are preferred.
 Missing events
 
 
+## Lines of code
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L422
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L176
+
+
 ## Impact
 The absence of events for important state-changing functions can lead to several issues:
 
@@ -86,8 +94,7 @@ The absence of events for important state-changing functions can lead to several
 
 ## Proof-of-concept
 Detect missing events for critical arithmetic parameters.
-
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L422
+https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
 
       function returnVaultAssets(
     address router,
@@ -109,7 +116,7 @@ https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THO
     require(success);
       }
 
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol#L176
+
 
       function transferAllowance(
     address router,
@@ -126,8 +133,6 @@ https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THO
     }
       }
 
-https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
-
 
 ## Recommendation
 Emit an event
@@ -135,6 +140,10 @@ Emit an event
 
 ## Title
 Protocol doesn't handle ERC20 tokens with decimals other than 18, leading tokens with many decimal values may cause issues due to overflow, while tokens with few decimal values may result in a loss of precision.
+
+
+## Lines of code
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol
 
 
 ## Impact
@@ -147,8 +156,6 @@ The incorrect handling of tokens with different decimal places can result in sev
 
 
 ## Proof-of-concept
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol
-
 https://solodit.xyz/issues/potential-funds-locked-due-low-token-decimal-and-long-stream-duration-spearbit-locke-pdf
 
 
@@ -167,14 +174,14 @@ Maybe add a function like this:
 Doesn't check for Handling Support For Fee on Transfer Tokens and Deflationary Tokens.
 
 
+## Lines of code
+https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol
+
+
 ## Impact
 Different ERC-20 token implementations behave differently regarding the actual amount received when transferring tokens. USDT on Ethereum, for example, can charge a fee when transferring ERC-20 tokens.
 Deflationary tokens like STA, meanwhile, burn a certain percentage of the transferred amount, which subsequently decreases the token supply.
 As a result, the transfer of STA and USDT, and other tokens like them, to a smart contract can result in incorrect token accounting.
-
-
-## Code
-https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THORChain_Router.sol
 
 
 ## Recommendation
