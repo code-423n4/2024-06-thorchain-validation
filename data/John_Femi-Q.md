@@ -17,4 +17,4 @@ expiry is better put after the _deposit function rather than before to ensure th
 This can be seen here https://github.com/code-423n4/2024-06-thorchain/blob/main/chain/ethereum/contracts/THORChain_Router.sol#L131
 
 ## Recommended Mitigation Steps
-put it after the _deposit function call in the depositWithExpiry function
+put `require(block.timestamp < expiration, "THORChain_Router: expired");` after the _deposit function call in the depositWithExpiry function
