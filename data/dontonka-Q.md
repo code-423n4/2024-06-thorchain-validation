@@ -56,7 +56,7 @@ https://github.com/code-423n4/2024-06-thorchain/blob/main/ethereum/contracts/THO
 
 ## [ LOW - 2 ] : transactions just fetched not saved into the block's metadata
 -----
-`ETHScanner::FetchTxs` will save the Block Metadata (calling `SaveBlockMeta`), but transaction(s) just fetched will `NOT be included` inside since in `NewBlockMeta` Transactions field is always initialized with empty array and `txIn parameter is ignored`. Only reporting this as Low as unsure on the impact and also NewBlockMeta is out-of-scope, but has the potential for Medium severity.
+`ETHScanner::FetchTxs` will save the Block Metadata (calling `SaveBlockMeta`), but transaction(s) just fetched will `NOT be included` inside since in `NewBlockMeta` Transactions field is always initialized with empty array and `txIn parameter is ignored`. Only reporting this as Low as unsure on the impact and also NewBlockMeta is out-of-scope (but FetchTxs is in scope), but has the potential for Medium severity.
 ```diff
 func (e *ETHScanner) FetchTxs(height, chainHeight int64) (stypes.TxIn, error) {
 	block, err := e.getRPCBlock(height)
