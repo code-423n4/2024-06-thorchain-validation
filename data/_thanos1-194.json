@@ -1,0 +1,8 @@
+{
+  "contest": 386,
+  "handle": "_thanos1",
+  "risk": "2",
+  "title": "Use of the send() Function May Cause DOS",
+  "issueId": 194,
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/194"
+}
