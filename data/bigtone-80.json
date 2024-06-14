@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "If the swapOut fails, the Ether should be sent to the recipient instead of the aggregator",
   "issueId": 80,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/80"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/80",
+  "validatedIssueId": 75,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/75"
 }
