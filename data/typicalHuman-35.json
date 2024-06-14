@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "If calling `swapOutV5` would fail on target contract this could lead to loss of funds",
   "issueId": 35,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/35"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/35",
+  "validatedIssueId": 88,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/88"
 }
