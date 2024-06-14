@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "`THORChain_Router::batchTransferOutAndCallV5` can be abused and user can drain contract funds.",
   "issueId": 112,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/112"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/112",
+  "validatedIssueId": 65,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/65"
 }
