@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Protocol could be tricked on some to-be integrated tokens",
   "issueId": 133,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/133"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/133",
+  "validatedIssueId": 62,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/62"
 }
