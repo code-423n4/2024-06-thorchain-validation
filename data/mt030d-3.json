@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "`_transferOutAndCallV5` transfers gas assets to a wrong address when the swap fails, resulting in the loss of user funds",
   "issueId": 3,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/3"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/3",
+  "validatedIssueId": 96,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/96"
 }
