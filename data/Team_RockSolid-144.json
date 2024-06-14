@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "_transferOutAndCallV5 emits event even if aggregator fails",
   "issueId": 144,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/144"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/144",
+  "validatedIssueId": 57,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/57"
 }
