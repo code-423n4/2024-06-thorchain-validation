@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Native token is sent to the wrong address in `_transferOutAndCallV5()` leading to the theft of these assets",
   "issueId": 234,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/234"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/234",
+  "validatedIssueId": 33,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/33"
 }
