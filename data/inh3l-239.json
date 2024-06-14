@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "`batchTransferOutAndCallV5` will be unusable due to msg.value in a loop type situation.",
   "issueId": 239,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/239"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/239",
+  "validatedIssueId": 30,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/30"
 }
