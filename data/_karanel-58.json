@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "`THORChain_Router::_transferOutV5` emits incorrect event data causing Bifrost to post `MsgObservedTxOut` to `THORChain`",
   "issueId": 58,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/58"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/58",
+  "validatedIssueId": 80,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/80"
 }
