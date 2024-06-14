@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Calling transferOutAndCallV5 function with fee on transfer token will fail",
   "issueId": 48,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/48"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/48",
+  "validatedIssueId": 83,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/83"
 }
