@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Calling `_transferOutAndCallV5` function is always DOS'ed for all vaults when corresponding ERC20 token is a fee-on-transfer token, such as STA",
   "issueId": 199,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/199"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/199",
+  "validatedIssueId": 15,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/15"
 }
