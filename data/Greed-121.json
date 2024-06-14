@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "The `TransferOutAndCallV5` event is not caught by `smartcontract_log_parser.go`",
   "issueId": 121,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/121"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/121",
+  "validatedIssueId": 20,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/20"
 }
