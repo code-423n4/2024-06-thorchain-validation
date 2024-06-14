@@ -4,5 +4,7 @@
   "risk": "Q",
   "title": "QA Report",
   "issueId": 46,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/46"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/46",
+  "validatedIssueId": 103,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/103"
 }
