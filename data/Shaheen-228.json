@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "`batchTransferOutAndCallV5` function is broken, it will not work in some cases and in some cases it will emit wrong event values.",
   "issueId": 228,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/228"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/228",
+  "validatedIssueId": 34,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/34"
 }
