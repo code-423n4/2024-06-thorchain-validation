@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "User can loss hsi funds in `_transferOutAndCallV5` function",
   "issueId": 60,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/60"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/60",
+  "validatedIssueId": 79,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/79"
 }
