@@ -4,5 +4,7 @@
   "risk": "3",
   "title": " smartcontract_log_parser.go client is setting `isVaultTransfer` to true  in the vaultTransferEvent case",
   "issueId": 69,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/69"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/69",
+  "validatedIssueId": 23,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/23"
 }
