@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "The function `THORChain_Router::_transferOutAndCallV5` is sending the ether to the `target` instead of the `recipient`.",
   "issueId": 110,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/110"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/110",
+  "validatedIssueId": 66,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/66"
 }
