@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "The THORChain Router is not compatible with ERC20 tokens that modify balances outside of transfers",
   "issueId": 4,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/4"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/4",
+  "validatedIssueId": 95,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/95"
 }
