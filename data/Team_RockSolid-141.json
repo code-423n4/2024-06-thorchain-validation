@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "In _transferOutAndCallV5, ETH is incorrectly sent to target",
   "issueId": 141,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/141"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/141",
+  "validatedIssueId": 59,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/59"
 }
