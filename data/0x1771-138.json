@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "batch transfers will fail cause msg.value is used instead of aggregationPayload.fromAmount",
   "issueId": 138,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/138"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/138",
+  "validatedIssueId": 60,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/60"
 }
