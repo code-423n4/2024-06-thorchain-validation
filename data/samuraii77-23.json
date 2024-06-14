@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Using `msg.value` in a loop allows the contract to be completely drained",
   "issueId": 23,
-  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/23"
+  "issueUrl": "https://github.com/code-423n4/2024-06-thorchain-validation/issues/23",
+  "validatedIssueId": 90,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-06-thorchain-findings/issues/90"
 }
